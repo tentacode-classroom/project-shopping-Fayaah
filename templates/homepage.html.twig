@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>
+        Accueil
+    </h1>
+    <h3> Liste des produits </h3>
+        <ul>
+            {% for id in products %}
+                <li>
+                    <a href="{{ path('product', {
+                           'id_product': id.id
+                    }) }}"> {{ cereal.name|upper }}  </a>
+                </li>
+            {% endfor %}
+        </ul>
+{% endblock %}
+
+
