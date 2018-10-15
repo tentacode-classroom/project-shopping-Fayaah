@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\CerealsRepository;
+use App\Entity\Cereals;
 
 class HomepageController extends AbstractController
 {
@@ -12,12 +14,14 @@ class HomepageController extends AbstractController
      */
     public function index()
     {
-        $cerealsRepository = new CerealsRepository();
-        $cereal = $cerealsRepository->findOneById($id_product);
 
-        return $this->render('homepage/index.html.twig', [
+        $cereals = $this->getDoctrine()
+            ->getRepository(Cereals::class)
+            ->orderProductByPrice();
+
+        return $this->render('homepage.html.twig', [
             'controller_name' => 'HomepageController',
-            'products' => $products,
+            'products' => $cereals,
         ]);
     }
 }

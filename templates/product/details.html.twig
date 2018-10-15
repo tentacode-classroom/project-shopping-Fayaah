@@ -1,7 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>
-        Produit {{ id_product }} !
-    </h1>
+{% block title %} {{ product.name }} {% endblock %}
+{% block main %}
+
+    <br><br><br><br>
+
+    <div class="container">
+        <h2> Et voici les... <strong> {{ product.name|upper }}</strong> ! </h2>
+        <!--<img src={{ product.img }} alt="Logo"> -->
+
+        <p> Description : <br> {{ product.description }} </p>
+
+        <p> Prix(€) : {{ product.price }}</p>
+
+        <p> Compteur de vue : {{ product.viewCounter }}</p>
+
+        <a href={{ path('basket_add', )}}> ajouter au panier </a>
+    </div>
+
+
 {% endblock %}

@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block main %}
     <h1>
         Accueil
     </h1>
     <h3> Liste des produits </h3>
         <ul>
-            {% for id in products %}
+            {% for product in products %}
                 <li>
                     <a href="{{ path('product', {
-                           'id_product': id.id
-                    }) }}"> {{ cereal.name|upper }}  </a>
+                           'id_product': product.id
+                    }) }}"> {{ product.name|upper }}  </a>
                 </li>
             {% endfor %}
         </ul>
